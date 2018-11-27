@@ -1,3 +1,12 @@
+////////////////////////////
+//
+// C# Memory Mapping Template
+// Original Template: https://atom0s.com/forums/viewtopic.php?t=178
+// Modified By: Brian Fehrman (@fullmetalcache)
+// Date Modified: 2018-11-27
+//
+////////////////////////////
+
 //x64
 //C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /unsafe /platform:x64/out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
 
