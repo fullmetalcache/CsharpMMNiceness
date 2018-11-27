@@ -1,13 +1,7 @@
-//Win7 x64
-//C:\Windows\Microsoft.NET\Framework64\v2.0.50727\csc.exe /unsafe /platform:x64 /out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
-
-//Win7 x86
-//C:\Windows\Microsoft.NET\Framework\v2.0.50727\csc.exe /unsafe /platform:x86 /out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
-
-//Win10 x64
+//x64
 //C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /unsafe /platform:x64/out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
 
-//Win10 x86
+//x86
 //C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /unsafe /platform:x86 /out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
 
 namespace nicenessExample
