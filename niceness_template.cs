@@ -42,7 +42,7 @@ namespace nicenessExample
  
 				// Write the niceness to the MMF..
 
-				$$$WRITES$$$
+				$$$NICENESS$$$
 			 
 				// Obtain a pointer to our MMF..
 				var pointer = (byte*)0;
